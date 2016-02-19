@@ -1,0 +1,53 @@
+# -*- coding:utf-8 -*-
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>${data['title']}</title>
+    <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="http://fed.pimg.cn/css/gallery/wap/reset.css" />
+    <style>
+        html{font-size:20px;}
+        #crop-area{position:relative; width:100%;}
+        #crop-area img{display:block; width:100%;}
+        #crop-area a{position:absolute;display:block;}
+        .comment-box{margin:0 auto; padding:0.5rem 0.75rem 0.5rem 0.5rem; max-width: 32rem; min-width: 12rem; border-top:1px solid #e1e1e1;}
+        .user-img{display: inline-block; width: 25px; height: 25px; border-radius: 100%; -webkit-border-radius:100%; overflow: hidden; vertical-align: middle;}
+        .u-name{margin-left:0.4rem; color: #ff3c8f; font-size: 0.7rem; }
+        .l-user-name{font-size: 0.5rem; color: #ff3c8f;}
+        .l-title{height: 0.5rem; line-height: 0.5rem;}
+        .l-time,.l-floor{margin-left:0.8rem; font-size: 0.45rem; color: #b0b0b0;}
+        .user-name{vertical-align: middle; height: 25px; line-height: 25px;}
+        .user-floor{float: right; font-size: 9px; color: #b0b0b0;}
+        .user-comment{margin-left:33px; font-size: 0.7rem; color: #888; width: 91.25%; border-radius: 5px;}
+        .time{margin-left:40px; font-size: 9px;}
+        .user-reply{margin-top:1rem; height: 1rem; line-height: 1rem; color: #b0b0b0; font-size: 11px;}
+        .user-reply em{float: right; font-style: normal;}
+        .j_report{margin-left:0.5rem; color: #b0b0b0; text-decoration: none;}
+        .j_reply{margin-right:0.5rem; display: inline-block; text-decoration: none; width: 48px; border-radius: 5px; border:1px solid #ff3c8f; color: #ff3c8f; text-align: center;}
+        .last-comment{margin-top:0.5rem; padding:0.6rem; background: #f2f2ef; border-radius: 7px; position: relative;}
+        .triangle{width:0; height: 0; border-left: 5px solid transparent; border-right:5px solid transparent; border-bottom: 5px solid #f2f2ef; position: absolute; left: 14%; top: -5px;}
+        .tags{padding:1rem 0.75rem;color:#6a6c72;font-size:13px; min-height:2rem;}
+        .tags a{padding:7.5px 15px; color:#6a6c72;border:1px solid #e2e2e2; border-radius:5px;}
+        .tags a{  display: inline-block; margin: 0.5rem 0 0 0.3rem;}
+        .spc-title{display:inline-block; float:left; height:3rem; padding:1rem;}
+        .tags a:active{color:#fff; border:1px solid #fff; background:#fca8c7;}
+    </style>
+</head>
+<body>
+    <div id="crop-area">
+        %for image in data['images']:
+        <img src="${image['url']}" />
+        %endfor
+    </div>
+    <script src="http://fed.dev.pimg.cn/js/gallery/require-zepto.js"></script>
+    <script>
+        require.config({
+            baseUrl: 'http://fed.dev.pimg.cn/js/'
+        })
+    </script>
+    <script src="http://fed.dev.pimg.cn/js/gallery/require-zeptoconfig.js"></script>
+    <script src="http://fed.dev.pimg.cn/js/app/wap/h5_web/anchor_topic.js"></script>
+</body>
+</html>
+

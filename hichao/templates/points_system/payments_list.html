@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>糖豆收支记录</title>
+	<link rel="stylesheet" type="text/css" href="${request.static_url('hichao:templates/points_system/css/base.css')}">
+	<style type="text/css">
+		html{background: #f2f3ee;}
+		body{background: #f2f3ee; font-family: \5FAE\8F6F\96C5\9ED1;}
+		ul{ padding: 0 10px;}
+		ul li{margin-top: 12px; height: 66px; background: #fff; line-height: 76px; position: relative;}
+		
+		.pic{display: inline-block; height: 35px; width: 35px; position: absolute; top:20%; margin-left: 12px;}
+		.tit{display:inline-block; margin-left: 56px; font-size: 12px; color: #010101; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:40%;}
+		.green{float:right; margin-right:10px; color: #30992e; font-size: 13px;}
+		.red{float:right; margin-right:10px; color: #b1000f; font-size: 13px;}
+		.date{position: absolute; color: #979797; font-size: 11px; top: -28px; left: 12px;}
+
+	</style>
+</head>
+<body>
+	<ul>
+    <!--
+		<li>
+			<p class="date">2014-08-23</p>
+			<div class="pic">
+				<img src="${request.static_url('hichao:templates/points_system/img/panments01.jpg')}" width="100%" alt="马克龙系列龙猫充电器" title="马克龙系列龙猫充电器"/>
+			</div>
+			<span class="tit">马克龙系列龙猫充电器</span>
+			<span class="green">-1200</span>
+
+	 	</li>
+
+		<li>
+			<p class="date">2014-08-23</p>
+			<div class="pic">
+				<img src="img/wincandy.jpg" width="100%" alt="获得积分" title="获得积分"/>
+			</div>
+			<span class="tit">帖子被加精华</span>
+			<span class="red">+5</span>
+
+		</li>
+
+		<li>
+			<p class="date">2014-08-23</p>
+			<div class="pic">
+				<img src="img/losecandy.png" width="100%" alt="违规操作扣除" title="违规操作扣除"/>
+			</div>
+			<span class="tit">违规操作扣除</span>
+			<span class="green">-12</span>
+
+		</li>-->
+	</ul>	
+    <script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/jquery_2.1.1.js')}" ></script>
+    <script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/payments_list.js')}" ></script>
+</body>
+</html>

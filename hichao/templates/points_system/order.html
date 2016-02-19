@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>兑换</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<!-- <link rel="stylesheet" href="${request.static_url('hichao:templates/points_system/css/base.css')}" /> -->
+		<script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/native_title.js')}" ></script>
+		<style type="text/css">
+		html{background: #f2f3ee;}
+		body{padding-top:14px; background: #f2f3ee; font-family: \5FAE\8F6F\96C5\9ED1;}
+		p.address{padding:0 12px; margin-bottom: 14px;  background: #fff; color: #5f5f5f; line-height: 44px; font-size: 15px;}
+		p.address span,.re_address span.arrow{float:right; font-family: \65B0\5B8B\4F53; font-weight: bold;color: #ababab; font-size: 15px;}
+        a{text-decoration: none;}
+		.box{padding:12px; height: 110px; background: #fff;}
+		.box dl dt{float:left; height: 62px;  border-radius: 7px; width: 62px; overflow: hidden;}
+		.box dl dd{margin-left:80px;  font-size: 13px; color: #5f5f5f; }
+
+		
+		.box dl dd.btn{margin-left:80px; margin-top: 4px;  height: 22px; border-radius: 4px; border:1px solid #d7d7d7; position: relative; width: 90px; }
+		.num{display:inline-block; width: 30px; height: 22px;line-height:22px; border-left:1px solid #eaeaea; border-right: 1px solid #eaeaea; position: absolute;  left: 30px; text-align: center; font-size: 15px; color: #5f5f5f;}
+		.col,.col1{height: 2px; width: 12px;  position: absolute; top: 10px;}
+		.col{left: 10px; background: #848484;}
+		.col1{right:8px; background: #fd5d9d;}
+		.row{width: 2px; height: 12px; position: absolute; background: #fd5d9d; top: 5px; right: 13px;}
+		.line{margin-top:14px; border-top:1px dashed #d7d7d7;}
+		p.pay{font-size: 13px; color: #848484; line-height: 44px;}
+		p.pay span.r{float: right;}
+		p.pay span.pink{color: #fd5d9d;}
+		#min{display:inline-block; height: 22px; width: 30px; }
+		#max{display: inline-block; height: 22px; width: 30px; position: absolute; right: 0;}
+		#btn{display:block; height: 40px; line-height: 40px; border-radius: 4px; margin: 0 1% 20px 1%; background: #ff4c90; position: absolute; bottom: 0; text-align: center; color: #fff; font-size: 17px; width: 94%;}
+
+       .re_address{margin-bottom:13px; padding:12px 12px 0 12px; height: 84px; background: #fff; color: #5f5f5f;}
+       .address_blank{width: 90%;}
+       .re_address span.arrow{line-height: 78px;}
+       .cname{margin-top:12px; font-size: 15px; }
+       .telephone{font-size: 16px;}
+       .get_address{font-size: 12px; margin-top: 5px;}
+		</style>
+	</head>
+<body>
+    <a href="/ong/points_system/address?access_token=${access_token}&goods_id=${goods['id']}">
+    %if user['addressee']!='' and user['phone']!='' and user['address']!='':
+	<div class="re_address"><span class="arrow">&gt;</span>
+		<div class="address_blank">
+			<p class="cname">收货人：${user['addressee']} <span class="telephone"> ${user['phone']}</span></p>
+			<p class="get_address">收货地址：${user['address']}</p>
+		</div>
+	</div>
+    %else:
+	<p class="address">填写收货地址<span>&gt;</span></p>
+    %endif
+    </a>
+	<div class="box cf">
+		<dl>
+			<dt><img src="${goods['image_url']}" width="100%" alt="美卡隆时尚自拍神器" title="${goods['title']}"></dt>
+			<dd>${goods['title']}</dd>
+			<dd class="cost">消耗：${goods['points_price']}糖豆</dd>
+			<dd class="btn">
+				<a href="javascript:;" id="min">
+					<div class="col"></div>
+				</a>
+				<div class="num" id="num">1</div>
+				<a href="javascript:;" id="max">
+					<div class="col1"></div>
+					<div class="row"></div>
+				</a>
+					
+			</dd>
+		</dl>
+		<p class="line"></p>
+		<p class="pay">运费：<span class="pink">免运费</span> <span class="r">合计：<span class="pink"><span id="candy">1200</span>糖豆</span></span></p>
+	</div>
+	<a href="/ong/points_system/order_result?access_token=${access_token}&goods_id=${goods['id']}" id="btn">兑换</a>
+ <script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/jquery_2.1.1.js')}" ></script>
+<script type="text/javascript">
+window.onload=function(){
+	var min=document.getElementById("min");
+	var max=document.getElementById("max");
+	var num=document.getElementById("num").innerHTML;
+	var candy=document.getElementById("candy").innerHTML;
+
+	var oMax=function(){
+		num++;
+		document.getElementById("num").innerHTML=num;
+		var oNum=1200*num;
+		document.getElementById("candy").innerHTML=oNum;
+
+		};
+
+	var oMin=function(){
+		num--;
+		if(num<=0){
+			num = 1;
+			return false;
+
+		}
+		document.getElementById("num").innerHTML=num;
+
+	    var oNum=1200*num;
+		document.getElementById("candy").innerHTML=oNum;
+		};
+
+    
+			
+	min.addEventListener("click",oMin,false);
+	max.addEventListener("click",oMax,false);
+
+
+
+
+    //糖豆判断
+    $(function(){
+       //获取URL
+        var geturlparam = function(name,url){
+            var search = url || document.location.search;
+            var pattern = new RegExp("[?&]"+name+"\=([^&]+)", "g");
+            var matcher = pattern.exec(search);
+            var items = null;
+            if(null != matcher){
+                try{
+                    items = decodeURIComponent(decodeURIComponent(matcher[1]));
+                }catch(e){
+                    try{
+                        items = decodeURIComponent(matcher[1]);
+                    }catch(e){
+                        items = matcher[1];
+                    }
+                }
+            }
+            return items;
+        } 
+        var access_token = geturlparam('access_token') || '';
+        var goods_id=geturlparam('goods_id') ||'';
+        var goods_num=num;
+        
+        $.ajax({
+            type:"get",
+            url:"http://api.beta.hichao.com/ong/points_system/points",
+            data:{'access_token':access_token},
+            dataType:"json",
+
+          success:function(data){
+            if(data.points>=candy){
+                $("#btn").attr('href','http://api.beta.hichao.com/ong/points_system/order_result?access_token='+access_token+'&goods_id='+goods_id+'&goods_num='+num+'&result=1');
+            }else{
+                $("#btn").attr('href','http://api.beta.hichao.com/ong/points_system/order_result?access_token='+access_token+'&goods_id='+goods_id+'&goods_num='+num+'&result=0');
+
+            }
+          
+          },
+
+          error:function(XMLHttpRequest,testStatus,errorThrown){
+
+                alert(errorThrown)
+          }
+        
+        
+        
+        
+        
+        
+        })
+    
+    
+    
+    
+    
+    
+    })
+
+}
+
+
+
+
+
+</script>
+</body>
+</html>

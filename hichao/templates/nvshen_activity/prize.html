@@ -1,0 +1,69 @@
+	<!-- 红包 -->
+	%if data['prizeType'] == 2:
+	<div class="main1"  access_token=${data['access_token']}>
+			<div class="img-container">
+				<img src=${data['userAvatar']} width="100%" />
+			</div>
+			<a href="javascript:;" class="toAddress"></a>
+			<p class="username">${data['userName']}</p>
+			<p class="playNum">您还有<span>${data['lefttimes']}</span>次抽奖机会</p>
+			<p class="mon_num">${data['prizeName']}</p>
+			<div class="jumpTohb"></div>
+			<div class="share"></div>
+			<div class="hb">
+				<img src=${data['prizeImage']} width="100%">
+			</div>
+			<a href="javascript:;" class="moreTimesBtn">再抽一次</a>
+		</div> 
+	
+		<!--优惠券--> 
+		%elif data['prizeType']== 3:
+		<div class="main2"  access_token=${data['access_token']}>
+			<div class="img-container">
+				<img src=${data['userAvatar']} width="100%" />
+			</div>
+			<a href="javascript:;" class="toAddress"></a>
+			<p class="username">${data['userName']}</p>
+			<p class="playNum">您还有<span>${data['lefttimes']}</span>次抽奖机会</p>
+			<p class="mon_num">${data['prizeName']}</p>
+			<div class="jumpToyhq"></div>
+			<div class="share"></div>
+			<div class="hb">
+				<img src=${data['prizeImage']} width="100%">
+			</div>
+			<a href="javascript:;" class="moreTimesBtn">再抽一次</a>
+		</div> 
+		
+<!--
+		%elif data['prizeType']== 1:
+		 <div class="main3">
+			<div class="img-container">
+				<img src="http://fed.dev.pimg.cn/images/wap/act/520/star1.png" width="100%" />
+			</div>
+			<a href="javascript:;" class="toAddress"></a>
+			<p class="username">Pearyman</p>
+			<p class="playNum">您还有<span>10</span>次抽奖机会</p>
+			<p class="mon_num"></p>
+			<div class="jumpTohb"></div>
+			<div class="share"></div>
+			<div class="hb">
+				<img src="http://fed.dev.pimg.cn/images/wap/act/520/t.png" width="100%">
+			</div>
+			<a href="javascript:;" class="moreTimesBtn">再抽一次</a>
+		</div> 
+
+			<!-- 未中奖 -->
+
+		%elif data['prizeType'] == 0:
+			<div class="main4" access_token=${data['access_token']}>
+				<div class="img-container">
+				<img src=${data['userAvatar']} width="100%" />
+				</div>
+				<p class="username">${data['userName']}</p>
+				<p class="playNum">您还有<span>${data['lefttimes']}</span>次抽奖机会</p>
+					<div class="share"></div>
+				<a href="javascript:;" class="moreTimesBtn">再抽一次</a>
+			</div>
+
+		%endif
+	

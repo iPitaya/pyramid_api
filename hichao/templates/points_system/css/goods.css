@@ -1,0 +1,21 @@
+html{background: #F2F3EE;}
+body{font-family: \5FAE\8F6F\96C5\9ED1; overflow-x: hidden; }
+.msg{padding:0 10px; background: #fff;}
+.msg ul li{height: 47px; line-height: 47px; border-bottom: 1px solid #DCDDD9; font-size:13px; }
+.msg ul li.pro span.title{display:inline-block; width:36%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 13px; font-weight: bold;}
+.msg ul li.none{border:none;}
+.candy{display:inline-block; margin-top: -4px;  vertical-align: middle;}
+.msg ul li.none span.no{font-size: 16px; color: #ff3799; font-weight: bold;}
+.msg ul li.none span.btn,.msg ul li.none span.btn1{float: right; margin-top:10px; padding-right: 20px; height: 30px; line-height: 30px; width: 30%; border-radius: 50px; vertical-align: middle; color:#fff; text-align: center; font-size: 14px;}
+.msg ul li.none span.btn{background:#ff3799;}
+.msg ul li.none span.btn1{background:#979797;}
+.arrow2{display: inline-block; float:right; margin-top: 8px; vertical-align: middle;}
+.msg ul li.pro span.grey{display:inline-block; margin-right: -16px; color: #979797; float: right; font-size: 12px;}
+.tmall,.taobao{display: inline-block; vertical-align: middle; margin:-2px 2px 0 6px;}
+.arrow{display: inline-block; vertical-align: middle; margin-top: -2px; margin-left: 6px;}
+.main-content {padding: 10px;}
+.main-content p{padding-left:6px; height: 35px; line-height: 35px; background: #fff; color: #979797; font-size: 13px; border-radius: 7px; }
+.main-content img{min-height:150px;display:block;}
+.duihuan{margin-left: 22px;}
+a{color: #000;}
+a,button,input{ -webkit-tap-highlight-color: rgba(255, 255, 255, 0); -webkit-user-modify: read-plaintext-only;}

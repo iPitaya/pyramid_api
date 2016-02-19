@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>${goods.title.decode('utf-8')}</title>
+		<link rel="stylesheet" href="${request.static_url('hichao:templates/points_system/css/base.css')}" />
+		<link rel="stylesheet" href="${request.static_url('hichao:templates/points_system/css/goods.css')}" />
+<script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/native_title.js')}" ></script>
+			</head>
+	<body>
+		<header>
+			<img src="${goods.image_url}" width="100%" title="商品详情"/>
+		</header>
+		<div class="msg">
+			<ul>
+				<li class="pro">
+					<a href="${goods.shopping_url}">
+						<span class="title">${goods.title.decode('utf-8')}</span>
+						% if goods.source == 'tmall':
+							<span class="grey">¥${goods.origin_price}<img class="tmall" src="${request.static_url('hichao:templates/points_system/img/tmall.png')}" width="20%"  />购买地址<img class="arrow" src="${request.static_url('hichao:templates/points_system/img/arrow_1.png')}" width="4%" /></span>
+						% elif goods.source == 'taobao':
+							<span class="grey">¥${goods.origin_price}<img class="taobao" src="${request.static_url('hichao:templates/points_system/img/taobao.png')}" width="20%"  />购买地址<img class="arrow" src="${request.static_url('hichao:templates/points_system/img/arrow_1.png')}" width="4%" /></span>
+						% endif
+					</a>
+				</li>
+				<li class="none"><img class="candy" src="${request.static_url('hichao:templates/points_system/img/tangdou.png')}" width="12%" /><span class="no">${goods.points_price}</span>
+                % if remain>0: 
+                <a href="order?access_token=${access_token}&goods_id=${goods.id}"><span class="btn"><span class="duihuan">去兑换</span><img class="arrow2" src="${request.static_url('hichao:templates/points_system/img/jiantou.png')}" width="8%" /></span>
+                % elif remain==0:
+                <span class="btn1"><span class="duihuan">已兑完</span></span>
+                % endif
+                </a></li>
+			</ul>
+		</div>
+		<div class="main-content">
+ 			<p>商品详情</p>
+			% for item in goods.multi_images:
+				<img lazy-src="${item.url}" width="100%" title="${goods.title}"/>
+			% endfor			
+		</div>
+    <script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/jquery_2.1.1.js')}" ></script>
+    <script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/goods.js')}" ></script>
+	</body>
+</html>

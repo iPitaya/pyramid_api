@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>帖子被加精华</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="${request.static_url('hichao:templates/points_system/css/base.css')}" />
+    <link rel="stylesheet" href="${request.static_url('hichao:templates/points_system/css/DailyTopicSelected.css')}" />
+<script type="text/javascript" src="${request.static_url('hichao:templates/points_system/js/native_title.js')}" ></script>
+</head>
+<body>
+	<header>
+	 	<p class="tit">帖子被加精华</p> 	
+	 	<div class="box">
+	 		<p class="tit1">奖励情况<span class="spc">+${points}</span></p>
+            % if times_current == times_limit:
+            <p>完成情况<span>${times_current}/${times_limit}(已完成)</span></p>
+            % else:
+            <p>完成情况<span>${times_current}/${times_limit}(还有${times_limit-times_current}项未完成)</span></p>
+            %endif 
+	 	</div>	
+	</header>
+	<img src="${request.static_url('hichao:templates/points_system/img/howtodo.jpg')}" width="100%" alt="完善个人资料" class="pic" />
+	<ul class="content">
+		<li>1. 登录明星衣橱</li>
+		<li>2.去布拉格发布优质帖子，管理员会根据精华帖的要求审核您的帖子，审核成功后您的帖子就会成为精华帖哦</li>
+		<li>3. 帖子被评为精华帖当天可获得糖豆奖励</li>
+		<li>4. 每加一次精华奖励5颗糖豆，一天最多奖励10颗</li>	
+	</ul>		
+	<!-- <footer>
+		<a href="javascript:;">去回帖</a>	
+	</footer>	 -->		
+</body>
+</html>
