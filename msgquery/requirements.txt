@@ -1,6 +1,0 @@
-pyzmq
-eventlet
-murmur
-ujson
-intstr
-redis

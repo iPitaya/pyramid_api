@@ -1,9 +1,0 @@
-body{color: #f2f3ee;}
-ul.main-content{padding:0 20px;}
-ul.main-content li{height: 40px; border-bottom: 1px solid #dcddd9;}
-ul.main-content li span.date,span.color{line-height: 40px; font-size: 12px;}
-ul.main-content li span.color{float: right; font-weight: bold;} 
-ul.main-content li span.date{color: #979797;}
-ul.main-content li span.green{color: #30992e;}
-ul.main-content li span.red{color: #b1000f;}
-a,button,input{ -webkit-tap-highlight-color: rgba(255, 0, 0, 0); -webkit-user-modify: read-plaintext-only;}
